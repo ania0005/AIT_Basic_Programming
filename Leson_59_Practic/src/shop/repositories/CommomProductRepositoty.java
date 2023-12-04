@@ -2,7 +2,7 @@ package shop.repositories;
 
 import shop.domain.CommonProduct;
 import shop.domain.interfases.Product;
-import shop.repositories.iterfaces.ProductRepository;
+import shop.repositories.interfaces.ProductRepository;
 
 import java.util.ArrayList;
 import java.util.HashMap;

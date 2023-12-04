@@ -14,7 +14,6 @@ public class CommonProduct implements Product {
         this.name = name;
         this.price = price;
         this.isActiv = true;
-
     }
 
     public void setId(int id) {

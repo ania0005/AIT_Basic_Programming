@@ -1,4 +1,4 @@
-package shop.repositories.iterfaces;
+package shop.repositories.interfaces;
 
 import shop.domain.interfases.Product;
 
