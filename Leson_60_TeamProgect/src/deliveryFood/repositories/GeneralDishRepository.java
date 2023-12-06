@@ -12,11 +12,13 @@ import java.util.Map;
 public class GeneralDishRepository implements DishRepository {
     private Map<Integer, Dish> dishes = new HashMap<>();
     private int currentId;
-    public GeneralDishRepository(){
+
+    public GeneralDishRepository() {
         addDish("Pizza", 40);
         addDish("Kebab", 35.5);
         addDish("King Burger", 38.40);
     }
+
     @Override
     public List<Dish> getAllDishes() {
         return new ArrayList<>(dishes.values());
@@ -29,4 +31,23 @@ public class GeneralDishRepository implements DishRepository {
         dishes.put(currentId, dish);
 
     }
+
+    @Override
+    public Dish getDishById(int id) {
+        return dishes.get(id);
+    }
+
+    @Override
+    public void setDishById(Dish dish, int id) {
+        dishes.put(id, dish);
+    }
+
+//    @Override
+//    public boolean inActivDish(int id) {
+//        if (dishes.containsKey(id)) {
+//            dishes.remove(id);
+//            return true;
+//        }
+//        return false;
+//    }
 }

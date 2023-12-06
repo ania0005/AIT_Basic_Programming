@@ -4,28 +4,28 @@ import deliveryFood.domain.interfaces.Client;
 import deliveryFood.domain.interfaces.Dish;
 import deliveryFood.domain.interfaces.Order;
 
-import java.util.Date;
+import java.util.List;
 
 public class GeneralClient implements Client {
-    private int id;
-    private boolean available;
+    private int clientId;
+    private boolean isAvailable;
     private String name;
-    private Order order;
+    private List<Order> orders;
 
-    public GeneralClient(String name, Order order) {
+
+    public GeneralClient(String name) {
         this.name = name;
-        this.order = order;
-        this.available = true;
+        this.isAvailable = true;
     }
 
     @Override
-    public int getId() {
-        return id;
+    public int getClientId() {
+        return clientId;
     }
 
     @Override
-    public boolean available() {
-        return available;
+    public boolean isAvailable() {
+        return isAvailable;
     }
 
     @Override
@@ -34,7 +34,19 @@ public class GeneralClient implements Client {
     }
 
     @Override
-    public Order getOrder() {
-        return order;
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public void setClientId(int clientId) {
+        this.clientId = clientId;
+    }
+
+    public void setAvailable(boolean available) {
+        isAvailable = available;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

@@ -2,9 +2,7 @@ package deliveryFood.domain.interfaces;
 
 public interface Dish {
     int getId();
-    boolean available();
+    boolean isAvailable();
     String getName();
     double getPrice();
-
-
 }

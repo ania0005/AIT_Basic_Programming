@@ -9,11 +9,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class CommomProductRepositoty implements ProductRepository {
+public class CommomProductRepository implements ProductRepository {
     private Map<Integer, Product> products = new HashMap<>();
     private int currentId;
 
-    public CommomProductRepositoty(){
+    public CommomProductRepository(){
         addProduct("Banane", 150);
         addProduct("Apple", 90);
         addProduct("Orange", 190);

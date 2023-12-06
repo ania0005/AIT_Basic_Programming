@@ -1,9 +1,14 @@
 package deliveryFood.domain.interfaces;
 
+
+import java.util.List;
+
 public interface Client {
-    int getId();
-    boolean available();
+    int getClientId();
+    boolean isAvailable();
     String getName();
-    Order getOrder();
+    List<Order> getOrders();
+    void setAvailable(boolean available);
+    void setName(String name);
 
 }

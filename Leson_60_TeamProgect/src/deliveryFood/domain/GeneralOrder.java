@@ -1,22 +1,36 @@
 package deliveryFood.domain;
 
+import deliveryFood.domain.interfaces.Client;
 import deliveryFood.domain.interfaces.Dish;
 import deliveryFood.domain.interfaces.Order;
 
 import java.io.File;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.DoubleStream;
 
 public class GeneralOrder implements Order {
 
     private int id;
+    private int clientId;
+    private LocalDateTime dateTime;
     private List<Dish> dishes = new ArrayList<>();
+
+    public GeneralOrder() {
+       dateTime = LocalDateTime.now();
+    }
 
     @Override
     public int getId() {
         return id;
+    }
+
+    @Override
+    public int getClientId() {
+        return clientId;
     }
 
     @Override
@@ -40,20 +54,31 @@ public class GeneralOrder implements Order {
         }
         return false;
     }
+    public LocalDateTime getDateTime() {
+        return dateTime;
+    }
 
     @Override
     public void clear() {
-
+        dishes.clear();
     }
 
     @Override
     public double getTotalPrice() {
-        return 0;
+        return dishes.stream()
+                .map(Dish::getPrice)
+                .reduce((x, y) -> x + y)
+                .orElse(0.0);
     }
 
     @Override
     public double getAveragePrice() {
-        return 0;
+        double averagePrice = dishes.stream()
+                .map(Dish::getPrice)
+                .mapToDouble(x -> x)
+                .average()
+                .orElse(0);
+        return averagePrice;
     }
 
     @Override
