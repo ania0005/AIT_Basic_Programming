@@ -10,12 +10,20 @@ public class GeneralClient implements Client {
     private int clientId;
     private boolean isAvailable;
     private String name;
+    private String adress;
+    private Order currentOrder;
     private List<Order> orders;
 
 
-    public GeneralClient(String name) {
+
+    public GeneralClient(String name, String adress) {
         this.name = name;
+        this.adress = adress;
         this.isAvailable = true;
+    }
+
+    public String getAdress() {
+        return adress;
     }
 
     @Override
@@ -29,7 +37,7 @@ public class GeneralClient implements Client {
     }
 
     @Override
-    public String getName() {
+    public String getClientByName() {
         return name;
     }
 
@@ -48,5 +56,26 @@ public class GeneralClient implements Client {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public void setAdress(String adress) {this.adress = adress;}
+
+    @Override
+    public void addOrder(GeneralOrder order) {
+        currentOrder = order;
+        orders.add(currentOrder);
+    }
+
+    public void addOrder(Order order){
+        orders.add(order);
+    }
+
+    @Override
+    public String toString() {
+        return String.format("id - %d, " +
+                        "name - %s, adress - %s, available - %s.",
+                clientId , name, adress, isAvailable ? "yes" : "no");
+
     }
 }

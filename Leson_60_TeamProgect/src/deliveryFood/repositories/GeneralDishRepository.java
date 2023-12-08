@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class GeneralDishRepository implements DishRepository {
     private Map<Integer, Dish> dishes = new HashMap<>();
@@ -17,6 +18,15 @@ public class GeneralDishRepository implements DishRepository {
         addDish("Pizza", 40);
         addDish("Kebab", 35.5);
         addDish("King Burger", 38.40);
+        addDish("Hamburger", 18.20);
+        addDish("Cheeseburger", 21.50);
+        addDish("Chicken Roll", 23.80);
+        addDish("French fries", 15.00);
+        addDish("Hamburger menu", 40.40);
+        addDish("Cheeseburger menu", 43.50);
+        addDish("Cola", 8.00);
+        addDish("Fanta", 8.00);
+        addDish("Sprit", 8.00);
     }
 
     @Override
@@ -29,7 +39,6 @@ public class GeneralDishRepository implements DishRepository {
         GeneralDish dish = new GeneralDish(name, price);
         dish.setId(++currentId);
         dishes.put(currentId, dish);
-
     }
 
     @Override
@@ -42,12 +51,11 @@ public class GeneralDishRepository implements DishRepository {
         dishes.put(id, dish);
     }
 
-//    @Override
-//    public boolean inActivDish(int id) {
-//        if (dishes.containsKey(id)) {
-//            dishes.remove(id);
-//            return true;
-//        }
-//        return false;
-//    }
+    @Override
+    public Dish getDishByName(String name) {
+        return dishes.values().stream()
+                .filter(x-> x.getName().equals(name))
+                .findFirst()
+                .orElse(null);
+    }
 }

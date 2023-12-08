@@ -9,13 +9,12 @@ public interface DishService {
     List<Dish> getAllAvailableDishes();
     void deleteDishById(int id);
     void deleteDishByName(String name);
-    Dish  changePrice(int id, double newPrice);
+    void  changePrice(int id, double newPrice);
     void restoreDishById(int id);
     void restoreDishByName(String name);
-    int totalDishes();
-    Dish  changeName(int id, String newName);
-
-
-
+    int totalDishesQuantity();
+    void  changeName(int id, String newName);
+    List<Dish> getAllDishes();
+    Dish getDishById(int id);
 
 }

@@ -19,10 +19,10 @@ public class GeneralClientRepository implements ClientRepository{
 
 
     public GeneralClientRepository() {
-        addClient("Ivanov");
-        addClient("Petrov");
-        addClient("Smirnov");
-        addClient("Zuev");
+        addClient("Ivanov", "Wilhelmstr. 1, Berlin");
+        addClient("Petrov", "Potsdamstr. 20, Berlin");
+        addClient("Smirnov", "Hagenerstr. 8, Berlin");
+        addClient("Zuev", "Sennigerstr. 16, Berlin");
 
     }
 
@@ -32,8 +32,8 @@ public class GeneralClientRepository implements ClientRepository{
     }
 
     @Override
-    public void addClient(String name) {
-        GeneralClient client = new GeneralClient(name);
+    public void addClient(String name, String adress) {
+        GeneralClient client = new GeneralClient(name, adress);
         client.setClientId(++currentId);
         clients.put(currentId, client);
     }
@@ -45,7 +45,10 @@ public class GeneralClientRepository implements ClientRepository{
 
     @Override
     public Client getClientByName(String name) {
-        return clients.get(name);
+        return clients.values().stream()
+                .filter(x-> x.getClientByName().equals(name))
+                .findFirst()
+                .orElse(null);
     }
 
     @Override

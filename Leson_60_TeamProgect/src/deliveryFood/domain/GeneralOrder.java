@@ -20,11 +20,11 @@ public class GeneralOrder implements Order {
     private List<Dish> dishes = new ArrayList<>();
 
     public GeneralOrder() {
-       dateTime = LocalDateTime.now();
+        dateTime = LocalDateTime.now();
     }
 
     @Override
-    public int getId() {
+    public int getOrderId() {
         return id;
     }
 
@@ -34,12 +34,12 @@ public class GeneralOrder implements Order {
     }
 
     @Override
-    public List<Dish> getDishes() {
+    public List<Dish> getDishesInOrder() {
         return dishes;
     }
 
     @Override
-    public boolean addDish(Dish dish) {
+    public boolean addDishToOrder(Dish dish) {
         return dishes.add(dish);
     }
 

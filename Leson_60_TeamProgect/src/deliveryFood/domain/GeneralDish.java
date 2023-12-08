@@ -2,6 +2,7 @@ package deliveryFood.domain;
 
 import deliveryFood.domain.interfaces.Dish;
 
+import java.util.List;
 import java.util.Objects;
 
 public class GeneralDish implements Dish {
@@ -41,6 +42,21 @@ public class GeneralDish implements Dish {
     }
 
     @Override
+    public void setAvailable(boolean available) {
+
+    }
+
+    @Override
+    public void setPrice(double newPrice) {
+
+    }
+
+    @Override
+    public void setName(String newName) {
+
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -55,7 +71,9 @@ public class GeneralDish implements Dish {
 
     @Override
     public String toString() {
-        return String.format("Dish: id - %d, name - %s, price - %.2f, available - %s/",
-                id, name, price, isAvailable ? "yes" : "no");
+        return String.format("id - %d, " +
+                        "name - %s, price - %.2f, available - %s.",
+                id , name, price, isAvailable ? "yes" : "no");
     }
+
 }
