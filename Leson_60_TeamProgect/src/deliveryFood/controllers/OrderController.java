@@ -64,7 +64,7 @@ public class OrderController {
                             dishAmount--;
                         }
 
-                    } else { //***
+                    } else {
                         cost = order.getTotalPrice();
                         System.out.printf("Your order: \n" + order + "\n Cost of your order: " + cost);
                         break;

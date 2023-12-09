@@ -42,19 +42,13 @@ public class GeneralDish implements Dish {
     }
 
     @Override
-    public void setAvailable(boolean available) {
-
-    }
+    public void setAvailable(boolean available) {isAvailable = available;}
 
     @Override
-    public void setPrice(double newPrice) {
-
-    }
+    public void setPrice(double newPrice) {price = newPrice;}
 
     @Override
-    public void setName(String newName) {
-
-    }
+    public void setName(String newName) {name = newName;}
 
     @Override
     public boolean equals(Object o) {

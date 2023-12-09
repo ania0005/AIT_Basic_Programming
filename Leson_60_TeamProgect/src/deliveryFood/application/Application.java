@@ -44,7 +44,7 @@ public class Application {
                             "3. Get list all available dishes \n" +
                             "4. Delete dish by id \n" +
                             "5. Delete dish by name \n" +
-                            "5. Restore dish by id \n" +
+                            "6. Restore dish by id \n" +
                             "7. Restore dish by name \n" +
                             "8. Change name \n" +
                             "9. Change price \n" +
