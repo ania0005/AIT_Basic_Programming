@@ -37,41 +37,40 @@ public class OrderController {
 
                 client = serviceClient.getClientByName(name);
 
-            while (true) {
-                System.out.println("Choose dish:\n" +
-                        "1. Kebab \n" +
-                        "2. King Burger \n" +
-                        "3. Hamburger \n" +
-                        "4. Cheeseburger \n" +
-                        "5. Chicken Roll \n" +
-                        "5. French fries \n" +
-                        "7. Hamburger menu \n" +
-                        "8. Cheeseburger menu \n" +
-                        "9. Cola \n" +
-                        "10. Fanta \n" +
-                        "11. Strit" +
-                        "0. Exit and show order cost");
+                while (true) {
+                    System.out.println("Choose dish:\n" +
+                            "1. Kebab \n" +
+                            "2. King Burger \n" +
+                            "3. Hamburger \n" +
+                            "4. Cheeseburger \n" +
+                            "5. Chicken Roll \n" +
+                            "5. French fries \n" +
+                            "7. Hamburger menu \n" +
+                            "8. Cheeseburger menu \n" +
+                            "9. Cola \n" +
+                            "10. Fanta \n" +
+                            "11. Strit" +
+                            "0. Exit and show order cost");
 
-                int dishId = Integer.parseInt(scanner.nextLine());
+                    int dishId = Integer.parseInt(scanner.nextLine());
 
-                if (dishId != 0) {
-                    int dishAmount;
-                    System.out.println("Type dish amount:");
-                    dishAmount = Integer.parseInt(scanner.nextLine());
+                    if (dishId != 0) {
+                        int dishAmount;
+                        System.out.println("Type dish amount:");
+                        dishAmount = Integer.parseInt(scanner.nextLine());
 
-                    while (dishAmount >= 1) {
-                        order.addDishToOrder(serviceDish.getDishById(dishId));
-                        --dishAmount;
+                        while (dishAmount >= 1) {
+                            order.addDishToOrder(serviceDish.getDishById(dishId));
+                            dishAmount--;
+                        }
+
+                    } else {
+                        cost = order.getTotalPrice();
+                        System.out.printf("Your order: \n" + order + "\n Cost of your order: " + cost);
+                        break;
                     }
-
-                }else
-                    cost = order.getTotalPrice();
-                    System.out.printf("Your order: \n" + order + "\n Cost of your order: " + cost);
-
-                    break;
-
+                    client.addOrder(order);
                 }
-                client.addOrder(order);
             }
         } catch (Exception e) {
             throw new RuntimeException(e);
