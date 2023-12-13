@@ -15,7 +15,7 @@ public class MainController {
     }
 
     public List<Object> sendReduest(String query) {
-        try {
+
             String[] parts = query.split(" ");
             int objectNum = Integer.parseInt(parts[0]);
             int operationNum = Integer.parseInt(parts[1]);
@@ -90,7 +90,7 @@ public class MainController {
                             return result;
 
                         case 4:
-                            clientController.getAllOrdersByClientId();
+                            result.addAll(clientController.getAllOrdersByClientId());
                             return result;
 
                         case 5:
@@ -131,8 +131,17 @@ public class MainController {
 
                         case 13:
                             int result3;
-                            result3 = clientController.totalClientsQuantity();
+                            result3 = clientController.orderQuantityByClient();
                             result.add(result3);
+                            return result;
+
+                        case 14:
+                            result.addAll(clientController.getAllVipClient());
+                            return result;
+                        case 15:
+                            int result4;
+                            result4 = clientController.totalVipClientsQuantity();
+                            result.add(result4);
                             return result;
                         default:
                             System.out.println("Invalid input!");
@@ -146,7 +155,7 @@ public class MainController {
                             return result;
 
                         case 2:
-                            orderController.deleteDishFromOrder();
+                            orderController.deleteOrderById();
                             return result;
 
                         case 3:
@@ -158,15 +167,13 @@ public class MainController {
                     }
                     break;
             }
-            return result;
-
-        } catch (Exception e) {
-            System.out.println("There was an error in MainController");
-            throw new RuntimeException(e);
-        }
+        return result;
 
     }
 }
+
+
+
 
 
 

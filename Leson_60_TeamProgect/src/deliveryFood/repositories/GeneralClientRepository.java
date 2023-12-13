@@ -13,8 +13,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class GeneralClientRepository implements ClientRepository{
+public class GeneralClientRepository implements ClientRepository {
     private Map<Integer, Client> clients = new HashMap<>();
+
     private int currentId;
 
 
@@ -38,22 +39,18 @@ public class GeneralClientRepository implements ClientRepository{
         clients.put(currentId, client);
     }
 
+
     @Override
     public Client getClientById(int id) {
-            return clients.get(id);
+        return clients.get(id);
     }
 
     @Override
     public Client getClientByName(String name) {
         return clients.values().stream()
-                .filter(x-> x.getClientByName().equals(name))
+                .filter(x -> x.getClientByName().equalsIgnoreCase(name))
                 .findFirst()
                 .orElse(null);
-    }
-
-    @Override
-    public void setClientById(Client client, int id) {
-        clients.put(id, client);
     }
 
 }

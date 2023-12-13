@@ -42,13 +42,20 @@ public class GeneralDish implements Dish {
     }
 
     @Override
-    public void setAvailable(boolean available) {isAvailable = available;}
+    public void setAvailable(boolean available) {
+        isAvailable = available;
+    }
 
     @Override
-    public void setPrice(double newPrice) {price = newPrice;}
+    public void setPrice(double newPrice) {
+        price = newPrice;
+    }
 
     @Override
-    public void setName(String newName) {name = newName;}
+    public void setName(String newName) {
+        name = newName;
+    }
+
 
     @Override
     public boolean equals(Object o) {
@@ -65,9 +72,14 @@ public class GeneralDish implements Dish {
 
     @Override
     public String toString() {
-        return String.format("id - %d, " +
-                        "name - %s, price - %.2f, available - %s.",
-                id , name, price, isAvailable ? "yes" : "no");
+        return String.format("%d. " +
+                        " %s, price - %.2f, is active - %s.",
+                id, name, price, isAvailable ? "yes" : "no");
     }
+    @Override
+    public String toStringOrder() {
+        return String.format(" %s, price - %.2f",
+                name, price);
+    };
 
 }

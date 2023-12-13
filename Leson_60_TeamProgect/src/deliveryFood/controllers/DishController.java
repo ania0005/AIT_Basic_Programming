@@ -22,11 +22,11 @@ public class DishController {
 
             System.out.println("Input dish price:");
             double price = Double.parseDouble(scanner.nextLine());
-
             service.addDish(name, price);
 
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("Enter correct details");
+
         }
     }
 

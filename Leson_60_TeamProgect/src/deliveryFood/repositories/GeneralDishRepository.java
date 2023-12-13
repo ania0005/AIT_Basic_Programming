@@ -47,14 +47,9 @@ public class GeneralDishRepository implements DishRepository {
     }
 
     @Override
-    public void setDishById(Dish dish, int id) {
-        dishes.put(id, dish);
-    }
-
-    @Override
     public Dish getDishByName(String name) {
         return dishes.values().stream()
-                .filter(x-> x.getName().equals(name))
+                .filter(x -> x.getName().equalsIgnoreCase(name))
                 .findFirst()
                 .orElse(null);
     }

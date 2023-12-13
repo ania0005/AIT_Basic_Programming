@@ -31,9 +31,14 @@ public class ClientController {
             throw new RuntimeException(e);
         }
     }
+    public List<Client> getAllVipClient() {
+        return service.getAllVipClient();
+    }
+
     public List<Client> getAllClient() {
         return service.getAllClients();
     }
+
     public List<Client> getAllAvailableClient() {
         return service.getAllAvailableClient();
     }
@@ -88,7 +93,6 @@ public class ClientController {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-
     }
 
     public void restoreClientByName() {
@@ -107,13 +111,19 @@ public class ClientController {
     public int totalClientsQuantity() {
         return service.totalClientsQuantity();
     }
+    public int totalVipClientsQuantity() {
+        return service.totalVipClientsQuantity();
+    }
 
     public void changeAdress() {
         try {
             Scanner scanner = new Scanner(System.in);
             System.out.println("Input client name:");
             String name = scanner.nextLine();
-
+            if(!(name instanceof String)){
+                System.out.println("Input correct information. ");
+                return;
+            }
             System.out.println("Input new adress");
             String adress = scanner.nextLine();
 

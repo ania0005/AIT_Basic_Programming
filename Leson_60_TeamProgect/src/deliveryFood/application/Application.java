@@ -27,76 +27,92 @@ public class Application {
         OrderController orderController = new OrderController(clientService, dishService);
         MainController mainController = new MainController(dishController, clientController, orderController);
 
-        Scanner scanner = new Scanner(System.in);
-        while (true) {
-            System.out.println("Choose an object:\n" +
-                    "1. Dish. \n" +
-                    "2. Client. \n" +
-                    "3. Order. \n" +
-                    "0. Output.");
-            int objectNum = Integer.parseInt(scanner.nextLine());
+            Scanner scanner = new Scanner(System.in);
+            while (true) {
+                try {
+                System.out.println("""
+                        Choose an object:
+                        1. Dish.\s
+                        2. Client.\s
+                        3. Order.\s
+                        0. Output.""");
+                int objectNum = Integer.parseInt(scanner.nextLine());
 
-            switch (objectNum) {
-                case 1:
-                    System.out.println("Choose an operation:\n" +
-                            "1. Save new dish \n" +
-                            "2. Get list all dishes \n" +
-                            "3. Get list all available dishes \n" +
-                            "4. Delete dish by id \n" +
-                            "5. Delete dish by name \n" +
-                            "6. Restore dish by id \n" +
-                            "7. Restore dish by name \n" +
-                            "8. Change name \n" +
-                            "9. Change price \n" +
-                            "10. Get total dishes quantity \n");
+                switch (objectNum) {
+                    case 1:
+                        System.out.println("""
+                                Choose an operation:
+                                1. Save new dish\s
+                                2. Get list all dishes\s
+                                3. Get list all available dishes\s
+                                4. Delete dish by id\s
+                                5. Delete dish by name\s
+                                6. Restore dish by id\s
+                                7. Restore dish by name\s
+                                8. Change name\s
+                                9. Change price\s
+                                10. Get total dishes quantity\s
+                                """);
 
-                    int operationNum = Integer.parseInt(scanner.nextLine());
+                        int operationNum = Integer.parseInt(scanner.nextLine());
 
-                    mainController.sendReduest(objectNum + " " + operationNum)
-                            .forEach(System.out :: println);
+                        mainController.sendReduest(objectNum + " " + operationNum)
+                                .forEach(System.out::println);
 
-                    break;
+                        break;
 
-                case 2:
-                    System.out.println("Choose an operation:\n" +
-                            "1. Save new client \n" +
-                            "2. Get list all clients \n" +
-                            "3. Get list all available clients \n" +
-                            "4. Get list all orders by client \n" +
-                            "5. Delete client by id \n" +
-                            "6. Delete client by name \n" +
-                            "7. Restore client by id \n" +
-                            "8. Restore client by name \n" +
-                            "9. Change clients name \n" +
-                            "10. Change clients adress \n" +
-                            "11. Get total clients quantity \n" +
-                            "12. Get total orders quantity \n" +
-                            "13. Get total orders by client \n");
-                    int operationNum1 = Integer.parseInt(scanner.nextLine());
+                    case 2:
+                        System.out.println("""
+                                Choose an operation:
+                                1. Save new client\s
+                                2. Get list all clients\s
+                                3. Get list all available clients\s
+                                4. Get list all orders by client\s
+                                5. Delete client by id\s
+                                6. Delete client by name\s
+                                7. Restore client by id\s
+                                8. Restore client by name\s
+                                9. Change clients name\s
+                                10. Change clients adress\s
+                                11. Get total clients quantity\s
+                                12. Get total orders quantity\s
+                                13. Get total orders by client\s
+                                14. Get list all vip clients\s
+                                15. Get total vip clients\s
+                                """);
 
-                    mainController.sendReduest(objectNum + " " + operationNum1)
-                            .forEach(System.out :: println);
-                    break;
-                case 3:
-                    System.out.println("Choose an operation:\n" +
-                            "1. Create new order \n" +
-                            "2. Delete dish from order \n"+
-                            "3. View order \n");
+                        int operationNum1 = Integer.parseInt(scanner.nextLine());
+
+                        mainController.sendReduest(objectNum + " " + operationNum1)
+                                .forEach(System.out::println);
+                        break;
+                    case 3:
+                        System.out.println("""
+                                Choose an operation:
+                                1. Create new order\s
+                                2. Delete dish from order\s
+                                3. View order\s
+                                """);
 
 
-                    int operationNum2 = Integer.parseInt(scanner.nextLine());
+                        int operationNum2 = Integer.parseInt(scanner.nextLine());
 
-                    mainController.sendReduest(objectNum + " " + operationNum2)
-                            .forEach(System.out :: println);
+                        mainController.sendReduest(objectNum + " " + operationNum2)
+                                .forEach(System.out::println);
+                        System.out.println();
 
-                    break;
+                        break;
+                    case 0:
+                        return;
+                    default:
+                        System.out.println("Incorrect input");
+                        break;
+                }
 
-                case 0:
-                    return;
-                default:
-                    System.out.println("Incorrect input");
-                    break;
-            }
+                    } catch (Exception e) {
+                    System.out.println("Error!!! " + e.getMessage());
+
+                }
         }
     }
 }
