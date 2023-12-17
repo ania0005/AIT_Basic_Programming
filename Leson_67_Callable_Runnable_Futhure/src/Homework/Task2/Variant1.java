@@ -12,49 +12,31 @@ public class Variant1 extends Thread {
 
     private static String data = "";
 
+    public static void run(String litera) {
+        for (int i = 0; i < 5; i++) {
+            synchronized (data) {
+                try {
+                    data.notifyAll();
+                    data.wait(1);
+                    System.out.print(litera);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        }
+    }
+
+
     public static void main(String[] args) {
+
         Runnable runnable1 = () -> {
-            for (int i = 0; i < 5; i++) {
-                synchronized (data) {
-                    try {
-                        data.notifyAll();
-                        data.wait(1);
-                        System.out.print("A");
-                    } catch (InterruptedException e) {
-                        throw new RuntimeException(e);
-                    }
-                }
-            }
+            run("A");
         };
-
         Runnable runnable2 = () -> {
-            for (int i = 0; i < 5; i++) {
-                synchronized (data) {
-                    try {
-                        data.notifyAll();
-                        data.wait(1);
-                        System.out.print("B");
-
-                    } catch (InterruptedException e) {
-                        throw new RuntimeException(e);
-                    }
-                }
-            }
+            run("B");
         };
-
         Runnable runnable3 = () -> {
-            for (int i = 0; i < 5; i++) {
-                synchronized (data) {
-                    try {
-                        data.notifyAll();
-                        data.wait(1);
-                        System.out.print("C");
-                    } catch (InterruptedException e) {
-                        throw new RuntimeException(e);
-                    }
-                }
-            }
-
+            run("C");
         };
 
         Thread thread1 = new Thread(runnable1);
